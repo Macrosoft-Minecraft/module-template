@@ -1,7 +1,6 @@
 package mods.macrosoft;
 
 import com.bezouro.modules.CloudScript.Core.CloudScriptAction;
-import com.bezouro.modules.CloudScript.Info.ModuleInfo;
 import net.eq2online.macros.scripting.*;
 import net.eq2online.macros.scripting.api.*;
 import net.eq2online.macros.scripting.parser.*;
