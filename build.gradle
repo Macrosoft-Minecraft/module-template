@@ -40,3 +40,14 @@ dependencies {
     implementation name: 'mod_macros_0.11.3_for_1.8'
 
 }
+
+//By Federal: see 		https://docs.gradle.org/current/dsl/org.gradle.api.tasks.Exec.html
+task Bezouro(type:Exec) {
+	dependsOn build
+	group = 'obfuscate'
+	doLast {
+		println 'OK. Obfuscated with AMS-Obfkit technology. By Bezouro'
+	}
+	workingDir 'build/libs/'
+	commandLine 'java', '-jar', '../../AMS-Obfkit/Runtime/Obfkit-1.0.jar', '--mapFile', '../../AMS-Obfkit/Runtime/Mappings/Minecraft 1.8/mcp-notch.srg', '--ref', '../../AMS-Obfkit/Runtime/Ref/Obf/minecraft-1.8.jar', '--input', 'HelloWorldModule.jar', '--output', 'HelloWorldModule-Api18.jar'
+}

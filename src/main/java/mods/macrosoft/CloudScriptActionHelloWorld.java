@@ -4,6 +4,8 @@ import com.bezouro.modules.CloudScript.Core.CloudScriptAction;
 import net.eq2online.macros.scripting.*;
 import net.eq2online.macros.scripting.api.*;
 import net.eq2online.macros.scripting.parser.*;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.entity.EntityPlayerSP;
 
 import java.util.ArrayList;
 
@@ -23,8 +25,11 @@ public class CloudScriptActionHelloWorld extends CloudScriptAction {
 
     public IReturnValue executeAction(IScriptActionProvider provider, IMacro macro, IMacroAction instance, String rawParams, String[] params) {
 
-    	provider.actionAddChatMessage(CloudScriptActionHelloWorld.MESSAGE);
-
+    	Minecraft mc = Minecraft.getMinecraft();
+    	EntityPlayerSP player = mc.thePlayer;
+    	
+    	provider.actionAddChatMessage(player.getCommandSenderName() + " " + CloudScriptActionHelloWorld.MESSAGE);
+    	
         return null;
 
     }
