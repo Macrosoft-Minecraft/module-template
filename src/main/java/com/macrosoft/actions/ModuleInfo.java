@@ -1,4 +1,4 @@
-package mods.macrosoft;
+package com.macrosoft.actions;
 
 public abstract class ModuleInfo
 {
