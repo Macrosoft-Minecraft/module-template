@@ -1,7 +1,6 @@
 package com.macrosoft;
 
 import java.io.BufferedReader;
-import java.io.DataOutputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
@@ -34,23 +33,24 @@ public class NET {
 				for (String header: headersList) {
 					String headerSnippets[] = header.split(":");
 					try {
-						connection.setRequestProperty(headerSnippets[0].trim(), headerSnippets[1].trim());
-						System.out.println("Header "+headerSnippets[0].trim()+" : "+headerSnippets[1].trim()+" added");
+						connection.setRequestProperty(headerSnippets[0].trim(), headerSnippets[1].trim().replace('+',';'));
+						System.out.println("Header "+headerSnippets[0].trim()+" : "+headerSnippets[1].trim().replace('+',';')+" added");
 					} catch (Exception e) {
 						System.out.println("Header "+header+" ignored");
 					}
 				}
 				//connection.setRequestProperty("Content-Language", "en-US");
 				//connection.setRequestProperty("Content-Type","application/x-www-form-urlencoded");
-				if (method.toUpperCase() == "POST") {
+				if (method.toUpperCase().equals("POST".toUpperCase())) {
 					connection.setRequestProperty("Content-Length",
 						Integer.toString(data.getBytes().length));
 					//Append data
-					try (DataOutputStream wr = new DataOutputStream(connection.getOutputStream())) {
+					connection.getOutputStream().write(data.getBytes("UTF-8"));
+					/*try (DataOutputStream wr = new DataOutputStream(connection.getOutputStream())) {
 						wr.writeBytes(data);
 						wr.flush();
 						wr.close();
-					}
+					}*/
 				}
 
 				//Get Response  
