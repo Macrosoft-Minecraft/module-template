@@ -1,6 +1,7 @@
 package com.macrosoft;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
@@ -54,7 +55,13 @@ public class NET {
 				}
 
 				//Get Response  
-				InputStream is = connection.getInputStream();
+				//InputStream is = connection.getInputStream();
+				InputStream is = null;     
+				try {
+				    is = connection.getInputStream();
+				} catch(IOException exception) {
+				   is = connection.getErrorStream();
+				}
 				BufferedReader rd = new BufferedReader(new InputStreamReader(is));
 				StringBuilder response = new StringBuilder(); // or StringBuffer if Java version 5+
 				String line;
