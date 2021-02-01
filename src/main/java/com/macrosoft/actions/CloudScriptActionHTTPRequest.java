@@ -14,7 +14,7 @@ import java.util.Map;
 public class CloudScriptActionHTTPRequest extends CloudScriptAction {
 	
     public CloudScriptActionHTTPRequest() {
-        super("httprequest");
+        super("request");
     }
 
     public boolean isThreadSafe() {
@@ -28,8 +28,8 @@ public class CloudScriptActionHTTPRequest extends CloudScriptAction {
     	
     	if (params.length > 1) {//Method & URL
     		
-    		String method=ScriptCore.parseVars(provider, macro, params[0], false);;
-    		String url=ScriptCore.parseVars(provider, macro, params[1], false);;
+    		String method=ScriptCore.parseVars(provider, macro, params[0], false);
+    		String url=ScriptCore.parseVars(provider, macro, params[1], false);
     				
     		String body="", headers="", timeout="5000";
         	String response, statuscode;
@@ -98,6 +98,7 @@ public class CloudScriptActionHTTPRequest extends CloudScriptAction {
     @Override
     public void onInit() {
         //context.getCore().registerScriptAction(this);
+    	System.out.println("[HTTPREQUEST ACTION] Init");
     	registerAction(this);
     }
 }
