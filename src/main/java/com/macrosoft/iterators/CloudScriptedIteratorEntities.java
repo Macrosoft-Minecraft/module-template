@@ -24,8 +24,6 @@ import net.minecraft.entity.player.EntityPlayer;
 
 @APIVersion(ModuleInfo.API_VERSION)
 public class CloudScriptedIteratorEntities extends AbstractEntitiesIterator {
-		
-	protected String typeEntity = "entity";
 	
 	public CloudScriptedIteratorEntities() {
 		super(null, null);
@@ -40,7 +38,7 @@ public class CloudScriptedIteratorEntities extends AbstractEntitiesIterator {
         for (Entity entity : el) {
         	if(entity != thePlayer) {
         		EntityManager subject = new EntityManager(thePlayer, entity);
-	        	if((!(entity instanceof EntityPlayer)) && (!(entity instanceof EntityLiving))) {
+	        	if(entity instanceof EntityLiving) {
 	        		es.add(subject);
 	        	}
         	}

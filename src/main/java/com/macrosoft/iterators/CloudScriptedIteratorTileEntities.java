@@ -20,8 +20,6 @@ import net.minecraft.entity.player.EntityPlayer;
 //public class CloudScriptedIteratorEntities extends ScriptedIterator {
 public class CloudScriptedIteratorTileEntities extends AbstractEntitiesIterator {
 	
-	protected String typeEntity = "tile";
-	
 	public CloudScriptedIteratorTileEntities() {
 		super(null, null);
 	}
@@ -34,7 +32,7 @@ public class CloudScriptedIteratorTileEntities extends AbstractEntitiesIterator 
         for (Entity entity : el) {
         	if(entity != thePlayer) {
         		EntityManager subject = new EntityManager(thePlayer, entity);
-	        	if(entity instanceof EntityLiving) {
+	        	if((!(entity instanceof EntityPlayer)) && (!(entity instanceof EntityLiving))) {
 	        		es.add(subject);
 	        	}
         	}

@@ -19,9 +19,7 @@ import net.minecraft.entity.player.EntityPlayer;
 @APIVersion(ModuleInfo.API_VERSION)
 //public class CloudScriptedIteratorEntities extends ScriptedIterator {
 public class CloudScriptedIteratorPlayerEntities extends AbstractEntitiesIterator {
-	
-	protected String typeEntity = "player";
-	
+
 	public CloudScriptedIteratorPlayerEntities() {
 		super(null, null);
 	}
