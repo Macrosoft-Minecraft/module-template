@@ -48,5 +48,5 @@ task Bezouro(type:Exec) {
 		println 'OK. Obfuscated with AMS-Obfkit technology. By Bezouro'
 	}
 	workingDir 'build/libs/'
-	commandLine 'java', '-jar', '../../AMS-Obfkit/Runtime/Obfkit-1.0.jar', '--mapFile', '../../AMS-Obfkit/Runtime/Mappings/Minecraft 1.8/mcp-notch.srg', '--ref', '../../AMS-Obfkit/Runtime/Ref/Obf/minecraft-1.8.jar', '--input', 'HelloWorldModule.jar', '--output', 'MacrosoftNET-Api18.jar'
+	commandLine 'java', '-jar', '../../AMS-Obfkit/Runtime/Obfkit-1.0.jar', '--mapFile', '../../AMS-Obfkit/Runtime/Mappings/Minecraft 1.8/mcp-notch.srg', '--ref', '../../AMS-Obfkit/Runtime/Ref/Obf/minecraft-1.8.jar', '--input', 'HelloWorldModule.jar', '--output', 'MacrosoftINTEL-Api18.jar'
 }

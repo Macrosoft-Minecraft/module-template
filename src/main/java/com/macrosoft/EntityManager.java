@@ -142,6 +142,19 @@ public class EntityManager {
     	return false;
     }
 	
+	static public boolean matchType(String type, Entity entity) {
+		
+		if (("PLAYER".equalsIgnoreCase(type.trim())) && (entity instanceof EntityPlayer)) {
+	        return true;
+	    } else if (("ENTITY".equalsIgnoreCase(type.trim())) && (entity instanceof EntityLiving)) {
+	        return true;
+	    } else if ("TILE".equalsIgnoreCase(type.trim())) {
+	    	return true;
+	    }   
+		
+    	return false;
+    }
+	
 	public String getCategory() {
 		return category;
 	}
