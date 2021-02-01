@@ -1,6 +1,7 @@
 package com.macrosoft.iterators;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -14,25 +15,27 @@ import net.eq2online.macros.scripting.ScriptedIterator;
 import net.eq2online.macros.scripting.api.APIVersion;
 import net.eq2online.macros.scripting.api.IMacro;
 import net.eq2online.macros.scripting.api.IScriptActionProvider;
-//import net.eq2online.macros.scripting.api.IScriptedIterator;
+import net.eq2online.macros.scripting.api.IScriptedIterator;
 import net.eq2online.macros.scripting.parser.ScriptContext;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.entity.Entity;
 
 @APIVersion(ModuleInfo.API_VERSION)
-public class CloudScriptedIteratorEntities extends ScriptedIterator {
-//public class CloudScriptedIteratorEntities extends ScriptedIterator implements IScriptedIterator {
+//public class CloudScriptedIteratorEntities extends ScriptedIterator {
+public class CloudScriptedIteratorEntities extends ScriptedIterator implements IScriptedIterator {
 		
 	private String NAME = "entities";
 	private String DEF = "\\(([^:)]*):?([^)]*)\\)";
 	
 	public CloudScriptedIteratorEntities() {
 		super(null, null);
+		System.out.println("[ENTITY ITER] INIT EMPTY");
 	}
 	
 	public CloudScriptedIteratorEntities(IScriptActionProvider provider, IMacro macro, String iteratorDef) {
     	super(provider, macro);
+    	System.out.println("[ENTITY ITER] INIT NORMAL");
     	String type = null;
     	String rangeStr = null;
     	int range = 0;
@@ -114,6 +117,12 @@ public class CloudScriptedIteratorEntities extends ScriptedIterator {
     public void onInit() {
         //ScriptContext.MAIN.getCore().registerIterator(NAME, this.getClass());
     	System.out.println("[ENTITIES ITER] Init");
-    	ScriptContext.MAIN.getCore().registerIterator(NAME, this.getClass());
+    	//ScriptContext.MAIN.getCore().registerIterator(NAME, this.getClass());
+    	Collection<ScriptContext> contexts = ScriptContext.getAvailableContexts();
+    	for (ScriptContext context : contexts) {
+    		context.getCore().registerIterator(NAME, this.getClass());
+    	}
+    	
+    	//ScriptContext.MAIN.getCore().regi
     }
 }
