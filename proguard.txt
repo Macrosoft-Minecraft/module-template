@@ -1,0 +1,42 @@
+# Include java runtime classes
+-libraryjars  <java.home>/lib/rt.jar;./libs/obf/mod_macros_0.9.9_for_1.5.2.jar;./libs/obf/CloudScript-Api10.jar;./libs/obf/1.5.2.jar
+
+# Output a source map file
+-printmapping proguard.map
+
+# mantendo anotação APIVersion
+-keepattributes *Annotation*
+
+-keep, allowobfuscation class *
+
+-keepclassmembers, allowobfuscation class * {
+    *;
+}
+
+-keepnames class **.actions.** {}
+-keepnames class **.vars.** {}
+-keepnames class **.iterators.** {}
+-keepnames class **.eventProviders.** {}
+
+-keepclassmembernames class * {
+    java.lang.Class class$(java.lang.String);
+    java.lang.Class class$(java.lang.String, boolean);
+}
+
+-keepclasseswithmembernames class * {
+    native <methods>;
+}
+
+-keepclassmembers enum * {
+    public static **[] values();
+    public static ** valueOf(java.lang.String);
+}
+
+-keepclassmembers class * implements java.io.Serializable {
+    static final long serialVersionUID;
+    private static final java.io.ObjectStreamField[] serialPersistentFields;
+    private void writeObject(java.io.ObjectOutputStream);
+    private void readObject(java.io.ObjectInputStream);
+    java.lang.Object writeReplace();
+    java.lang.Object readResolve();
+}
