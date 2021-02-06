@@ -8,7 +8,7 @@ import net.eq2online.macros.scripting.api.IVariableProvider;
 import net.eq2online.macros.scripting.api.APIVersion;
 
 @APIVersion(ModuleInfo.API_VERSION)
-public class VariableProviderBreaker extends VariableCache implements IVariableProvider {
+public class CloudScriptVariableProviderHelloWorld extends VariableCache implements IVariableProvider {
 
     public void updateVariables(boolean clock) {
         this.setCachedVariable("HELLOWORLD", HelloWorld());
